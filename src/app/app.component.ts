@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OptionsService, DEFAULT_VERSION, VERSION } from './options.service';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +10,18 @@ export class AppComponent implements OnInit {
   title = 'JSPass';
 
   toggleVersionStatus = false;
-  version = 2;
+  version = DEFAULT_VERSION;
   legacyIconDisplay = 'none';
 
   toggleThemeStatus = false;
   theme = 'light';
 
+  constructor(private optionsService: OptionsService) {}
+
   ngOnInit() {
-    const version = window.localStorage.getItem('version');
-    if (version && Number(version) !== this.version) {
-      this.version = 1;
+    const version = this.optionsService.getCurrentVersion();
+    if (version !== this.version) {
+      this.version = version;
       this.updateVersion();
     }
 
@@ -34,16 +37,16 @@ export class AppComponent implements OnInit {
     event.stopPropagation();
 
     if (this.toggleVersionStatus) {
-      this.version = 2;
+      this.version = VERSION.TWO;
     } else {
-      this.version = 1;
+      this.version = VERSION.ONE;
     }
 
     this.updateVersion();
   }
 
   updateVersion() {
-    if (this.version === 2) {
+    if (this.version === VERSION.TWO) {
       setTimeout(() => (this.toggleVersionStatus = false));
       this.legacyIconDisplay = 'none';
     } else {
@@ -51,7 +54,7 @@ export class AppComponent implements OnInit {
       this.legacyIconDisplay = 'inline';
     }
 
-    window.localStorage.setItem('version', `${this.version}`);
+    this.optionsService.storeCurrentVersion(this.version);
   }
 
   toggleTheme(event) {

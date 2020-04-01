@@ -1,0 +1,20 @@
+<mat-tab-group mat-stretch-tabs [selectedIndex]="selectedTab">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>looks_two</mat-icon>
+      Current version
+    </ng-template>
+    <ng-template matTabContent>
+      <app-options-form [version]="versionTwo"></app-options-form>
+    </ng-template>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>looks_one</mat-icon>
+      Legacy version
+    </ng-template>
+    <ng-template matTabContent>
+      <app-options-form [version]="versionOne"></app-options-form>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,24 @@
+mat-form-field {
+  width: 100%;
+}
+
+.mat-card {
+  background-color: transparent;
+}
+
+mat-card-content > p {
+  margin-bottom: 3em;
+}
+
+mat-card-actions {
+  text-align: right;
+}
+
+mat-card-actions button {
+  margin-right: 8px;
+}
+
+.header-icon {
+  font-size: 48px;
+  margin-top: -4px;
+}
