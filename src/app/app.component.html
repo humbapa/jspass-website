@@ -41,6 +41,20 @@
           ><span class="matSlideToggleSpan">Dark theme</span></mat-slide-toggle
         >
       </button>
+
+      <mat-divider></mat-divider>
+
+      <button mat-menu-item (click)="gotoExtension($event)">
+        <mat-icon>extension</mat-icon>
+        <span class="externalLinkSpan">Get Extension</span>
+        <mat-icon inline="true">launch</mat-icon>
+      </button>
+
+      <button mat-menu-item (click)="gotoHelp($event)">
+        <mat-icon>help_outline</mat-icon>
+        <span class="externalLinkSpan">Help</span>
+        <mat-icon inline="true">launch</mat-icon>
+      </button>
     </mat-menu>
   </mat-toolbar>
 </nav>

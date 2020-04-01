@@ -70,6 +70,22 @@ export class AppComponent implements OnInit {
     this.updateTheme();
   }
 
+  gotoExtension(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    document.location.href =
+      'https://chrome.google.com/webstore/detail/jspass/hbofdeafjgfikkakjdgmlfojabijcdan';
+  }
+
+  gotoHelp(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    document.location.href =
+      'https://github.com/humbapa/jspass/blob/master/README.md';
+  }
+
   updateTheme() {
     if (this.theme === 'light') {
       setTimeout(() => (this.toggleThemeStatus = false));
