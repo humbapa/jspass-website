@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OptionsBottomSheetComponent } from './options-bottom-sheet.component';
+import { SnackBarComponent } from './snack-bar.component';
 
-describe('OptionsBottomSheetComponent', () => {
-  let component: OptionsBottomSheetComponent;
-  let fixture: ComponentFixture<OptionsBottomSheetComponent>;
+describe('SnackBarComponent', () => {
+  let component: SnackBarComponent;
+  let fixture: ComponentFixture<SnackBarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OptionsBottomSheetComponent ]
+      declarations: [ SnackBarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OptionsBottomSheetComponent);
+    fixture = TestBed.createComponent(SnackBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

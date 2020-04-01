@@ -9,14 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
-import { AppComponent } from './app.component';
-import { OptionsPageComponent } from './options-page/options-page.component';
-import { OptionsFormComponent } from './options-form/options-form.component';
-import { OptionsBottomSheetComponent } from './options-bottom-sheet/options-bottom-sheet.component';
-import { PasswordGeneratorPageComponent } from './password-generator-page/password-generator-page.component';
-import { PasswordGeneratorV1Component } from './password-generator-v1/password-generator-v1.component';
-import { PasswordGeneratorV2Component } from './password-generator-v2/password-generator-v2.component';
-
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -33,16 +25,33 @@ import {
 } from '@angular/material/snack-bar';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {
+  MatDialogModule,
+  MAT_DIALOG_DEFAULT_OPTIONS,
+} from '@angular/material/dialog';
+
+import { AppComponent } from './app.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { OptionsPageComponent } from './options-page/options-page.component';
+import { OptionsFormComponent } from './options-form/options-form.component';
+import { IntroBottomSheetComponent } from './intro-bottom-sheet/intro-bottom-sheet.component';
+import { PasswordGeneratorPageComponent } from './password-generator-page/password-generator-page.component';
+import { PasswordGeneratorV1Component } from './password-generator-v1/password-generator-v1.component';
+import { PasswordGeneratorV2Component } from './password-generator-v2/password-generator-v2.component';
+import { PasswordGeneratorDialogComponent } from './password-generator-dialog/password-generator-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OptionsPageComponent,
     OptionsFormComponent,
-    OptionsBottomSheetComponent,
+    IntroBottomSheetComponent,
     PasswordGeneratorPageComponent,
     PasswordGeneratorV1Component,
     PasswordGeneratorV2Component,
+    SnackBarComponent,
+    PasswordGeneratorDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,17 +75,32 @@ import { MatDividerModule } from '@angular/material/divider';
     MatSnackBarModule,
     MatBottomSheetModule,
     MatDividerModule,
+    MatProgressBarModule,
+    MatDialogModule,
   ],
   providers: [
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
-      useValue: { duration: 5000, panelClass: 'jspass-snack-bar' },
+      useValue: {
+        duration: 5000,
+        verticalPosition: 'top',
+        panelClass: 'jspass-snack-bar',
+      },
+    },
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: {
+        hasBackdrop: true,
+        autoFocus: false,
+        width: 384,
+        closeOnNavigation: true,
+      },
     },
   ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(overlayContainer: OverlayContainer) {
-    overlayContainer.getContainerElement().classList.add('jspass-dark-theme');
+  constructor(private overlayContainer: OverlayContainer) {
+    overlayContainer.getContainerElement().classList.add('jspass-light-theme');
   }
 }

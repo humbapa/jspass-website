@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 import { OptionsService } from '../options.service';
 import { CryptoService } from '../crypto.service';
 
@@ -9,10 +10,12 @@ import { CryptoService } from '../crypto.service';
   templateUrl: './options-form.component.html',
   styleUrls: ['./options-form.component.scss'],
 })
-export class OptionsFormComponent implements OnInit {
+export class OptionsFormComponent implements OnInit, OnDestroy {
   optionsForm: FormGroup;
 
   @Input() version: number;
+
+  private snackBarRef: MatSnackBarRef<SnackBarComponent>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,22 +46,31 @@ export class OptionsFormComponent implements OnInit {
         });
       }
 
-      this.snackBar.open(
-        'Generated initial random values for salt and iterations, refresh the page to generate new ones.',
-        null,
-        {
+      this.snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {
+        data: {
+          message:
+            'Generated initial random values for salt and iterations, refresh the page to generate new ones.',
           duration: 8000,
-        }
-      );
+        },
+        duration: 8000,
+      });
     } else {
       this.optionsForm.patchValue(options);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.snackBarRef) {
+      this.snackBarRef.dismiss();
     }
   }
 
   onSubmit(): void {
     const options = { version: this.version, ...this.optionsForm.value };
     this.optionsService.storeOptions(options);
-    this.snackBar.open('Options successfully saved.');
+    this.snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {
+      data: { message: 'Options successfully saved.' },
+    });
   }
 
   getErrorMessageForField(fieldName): string {

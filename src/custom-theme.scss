@@ -15,7 +15,7 @@ $custom-typography: mat-typography-config(
   $subheading-2: mat-typography-level(20px, 32px, 400),
   $subheading-1: mat-typography-level(18px, 28px, 400),
   $body-2: mat-typography-level(16px, 26px, 500),
-  $body-1: mat-typography-level(16px, 26px, 400),
+  $body-1: mat-typography-level(16px, 22px, 400),
   $caption: mat-typography-level(14px, 20px, 400),
   $button: mat-typography-level(16px, 20px, 500),
 );
@@ -42,11 +42,26 @@ $jspass-light-theme: mat-light-theme(
   $jspass-light-warn
 );
 
+$jspass-light-theme-inverse: mat-light-theme(
+  $jspass-light-accent,
+  $jspass-light-primary,
+  $jspass-light-warn
+);
+
 .jspass-light-theme {
   @include angular-material-theme($jspass-light-theme);
 
+  @include mat-button-theme($jspass-light-theme-inverse);
+
+  @include mat-slide-toggle-theme($jspass-light-theme-inverse);
+
+  a {
+    color: black;
+  }
+
   .jspass-snack-bar {
-    background-color: mat-color($jspass-light-accent);
+    background-color: mat-color($jspass-light-warn, lighter);
+    color: black;
   }
 }
 
@@ -66,8 +81,12 @@ $jspass-dark-theme: mat-dark-theme(
     background-color: mat-color($jspass-dark-primary, darker);
   }
 
+  a {
+    color: white;
+  }
+
   .jspass-snack-bar {
-    background-color: mat-color($jspass-dark-accent);
+    background-color: mat-color($jspass-dark-warn, darker);
   }
 }
 
@@ -80,12 +99,32 @@ body {
 }
 
 main {
-  padding: 0 16px;
-  height: calc(100% - 64px);
+  padding: 16px;
+  min-height: calc(100% - 88px);
 }
 
 .fill-remaining-space {
-  /* This fills the remaining space, by using flexbox.
-     Every toolbar row uses a flexbox row layout. */
   flex: 1 1 auto;
+}
+
+.material-icons {
+  font-size: 20px;
+}
+
+.mat-card {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.mat-bottom-sheet-container {
+  max-height: 100vh !important;
+  min-height: 80vh !important;
+}
+
+.mat-snack-bar-container {
+  padding: 0 !important;
+}
+
+.mat-progress-bar .mat-progress-bar-fill {
+  transition: none !important;
 }

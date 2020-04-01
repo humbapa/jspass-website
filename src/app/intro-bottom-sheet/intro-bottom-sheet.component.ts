@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
 @Component({
-  selector: 'app-options-bottom-sheet',
-  templateUrl: './options-bottom-sheet.component.html',
-  styleUrls: ['./options-bottom-sheet.component.scss'],
+  selector: 'app-intro-bottom-sheet',
+  templateUrl: './intro-bottom-sheet.component.html',
+  styleUrls: ['./intro-bottom-sheet.component.scss'],
 })
-export class OptionsBottomSheetComponent implements OnInit {
+export class IntroBottomSheetComponent implements OnInit {
   constructor(
-    private bottomSheetRef: MatBottomSheetRef<OptionsBottomSheetComponent>,
+    private bottomSheetRef: MatBottomSheetRef<IntroBottomSheetComponent>,
     private router: Router
   ) {}
 

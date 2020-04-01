@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { OptionsService, VERSION } from '../options.service';
-import { OptionsBottomSheetComponent } from '../options-bottom-sheet/options-bottom-sheet.component';
+import { IntroBottomSheetComponent } from '../intro-bottom-sheet/intro-bottom-sheet.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -38,7 +38,7 @@ export class PasswordGeneratorPageComponent implements OnInit, OnDestroy {
         }
 
         if (this.optionsService.getOptionsForVersion(version) === null) {
-          this.bottomSheet.open(OptionsBottomSheetComponent);
+          this.bottomSheet.open(IntroBottomSheetComponent);
         }
       });
   }

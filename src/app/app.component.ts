@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { OptionsService, DEFAULT_VERSION, VERSION } from './options.service';
 
 @Component({
@@ -16,7 +17,10 @@ export class AppComponent implements OnInit {
   toggleThemeStatus = false;
   theme = 'light';
 
-  constructor(private optionsService: OptionsService) {}
+  constructor(
+    private optionsService: OptionsService,
+    private overlayContainer: OverlayContainer
+  ) {}
 
   ngOnInit() {
     const version = this.optionsService.getCurrentVersion();
@@ -91,10 +95,22 @@ export class AppComponent implements OnInit {
       setTimeout(() => (this.toggleThemeStatus = false));
       document.body.classList.remove('jspass-dark-theme');
       document.body.classList.add('jspass-light-theme');
+      this.overlayContainer
+        .getContainerElement()
+        .classList.remove('jspass-dark-theme');
+      this.overlayContainer
+        .getContainerElement()
+        .classList.add('jspass-light-theme');
     } else {
       setTimeout(() => (this.toggleThemeStatus = true));
       document.body.classList.remove('jspass-light-theme');
       document.body.classList.add('jspass-dark-theme');
+      this.overlayContainer
+        .getContainerElement()
+        .classList.remove('jspass-light-theme');
+      this.overlayContainer
+        .getContainerElement()
+        .classList.add('jspass-dark-theme');
     }
 
     window.localStorage.setItem('theme', this.theme);

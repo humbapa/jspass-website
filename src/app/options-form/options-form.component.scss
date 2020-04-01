@@ -2,10 +2,6 @@ mat-form-field {
   width: 100%;
 }
 
-.mat-card {
-  background-color: transparent;
-}
-
 mat-card-content > p {
   margin-bottom: 3em;
 }
@@ -16,6 +12,7 @@ mat-card-actions {
 
 mat-card-actions button {
   margin-right: 8px;
+  margin-bottom: 2em;
 }
 
 .header-icon {
