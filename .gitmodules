@@ -1,0 +1,3 @@
+[submodule "resources/jspass"]
+	path = resources/jspass
+	url = git@github.com:humbapa/jspass.git
