@@ -37,7 +37,6 @@ export class PasswordGeneratorDialogComponent implements OnInit, AfterViewInit {
     event.preventDefault();
     this.passwordField.nativeElement.focus();
     this.passwordField.nativeElement.select();
-    console.log();
     navigator.clipboard
       .writeText(this.passwordField.nativeElement.value)
       .then(() => {

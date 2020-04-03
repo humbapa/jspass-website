@@ -31,6 +31,7 @@ import {
   MAT_DIALOG_DEFAULT_OPTIONS,
 } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
@@ -79,6 +80,7 @@ import { PasswordGeneratorDialogComponent } from './password-generator-dialog/pa
     MatProgressBarModule,
     MatDialogModule,
     MatAutocompleteModule,
+    MatGridListModule,
   ],
   providers: [
     {

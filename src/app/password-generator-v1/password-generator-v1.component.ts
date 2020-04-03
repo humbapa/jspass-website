@@ -21,6 +21,7 @@ export class PasswordGeneratorV1Component implements OnInit, OnDestroy {
   passwordGeneratorForm: FormGroup;
   allDomains: string[];
   filteredDomains: Observable<string[]>;
+  currentSettings: SiteSettings;
 
   @ViewChild('passwordField') passwordField;
 
@@ -65,11 +66,16 @@ export class PasswordGeneratorV1Component implements OnInit, OnDestroy {
           value,
           VERSION.ONE
         );
-        if (settings) {
+        if (
+          settings &&
+          (!this.currentSettings ||
+            settings.domainName !== this.currentSettings.domainName)
+        ) {
           this.passwordGeneratorForm.patchValue({
             useSpecialChars: settings.useSpecialChars,
           });
         }
+        this.currentSettings = settings;
       });
   }
 
