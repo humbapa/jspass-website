@@ -70,7 +70,7 @@ export class OptionsService {
   }
 
   storeOptions(data: Options): void {
-    data.salt = data.salt.toLowerCase().trim();
+    data.salt = data.salt.toLowerCase().trim().replace(/\s/g, '');
     data.specialChars = data.specialChars.trim();
 
     localStorage.setItem(
