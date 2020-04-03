@@ -56,7 +56,7 @@ $jspass-light-theme-inverse: mat-light-theme(
   @include mat-slide-toggle-theme($jspass-light-theme-inverse);
 
   a {
-    color: black;
+    color: mat-color($jspass-light-primary, darker);
   }
 
   .jspass-snack-bar {
@@ -77,18 +77,17 @@ $jspass-dark-theme: mat-dark-theme(
 .jspass-dark-theme {
   @include angular-material-theme($jspass-dark-theme);
 
-  main {
-    background-color: mat-color($jspass-dark-primary, darker);
-    min-height: calc(100% - 96px);
-  }
-
   a {
-    color: white;
+    color: mat-color($jspass-dark-accent, darker);
   }
 
   .jspass-snack-bar {
     background-color: mat-color($jspass-dark-accent, darker);
   }
+}
+
+body.jspass-dark-theme {
+  background-color: mat-color($jspass-dark-primary, darker);
 }
 
 html,
