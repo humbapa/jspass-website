@@ -104,8 +104,8 @@ export class PasswordGeneratorV1Component implements OnInit, OnDestroy {
     );
 
     const password = createpassword(
-      this.passwordGeneratorForm.value.password,
-      this.passwordGeneratorForm.value.domain,
+      this.passwordGeneratorForm.value.password.trim(),
+      this.passwordGeneratorForm.value.domain.toLowerCase().trim(),
       options.salt,
       options.passwordLength,
       options.iterations,

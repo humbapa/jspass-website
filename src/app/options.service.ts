@@ -70,6 +70,9 @@ export class OptionsService {
   }
 
   storeOptions(data: Options): void {
+    data.salt = data.salt.toLowerCase().trim();
+    data.specialChars = data.specialChars.trim();
+
     localStorage.setItem(
       OptionsService.getStorageKeyForVersionData(data.version),
       JSON.stringify(data)

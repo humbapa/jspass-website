@@ -136,8 +136,8 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
     );
 
     createPasswordForDomainname(
-      this.passwordGeneratorForm.value.domain,
-      this.passwordGeneratorForm.value.password,
+      this.passwordGeneratorForm.value.domain.toLowerCase().trim(),
+      this.passwordGeneratorForm.value.password.trim(),
       {
         salt: options.salt,
         iterations: options.iterations,
