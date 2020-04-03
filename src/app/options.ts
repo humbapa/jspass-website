@@ -7,7 +7,5 @@ export class Options {
 
   public iterations: number;
 
-  public myDomains: string;
-
   public specialChars: string;
 }

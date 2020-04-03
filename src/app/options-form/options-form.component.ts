@@ -27,7 +27,6 @@ export class OptionsFormComponent implements OnInit, OnDestroy {
       salt: [''],
       iterations: [1],
       passwordLength: [15],
-      myDomains: [''],
       specialChars: ['@!?_#%.-*&$^:'],
     });
   }

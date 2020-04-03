@@ -75,26 +75,6 @@
       </p>
 
       <p>
-        <mat-form-field appearance="fill">
-          <mat-label>My domains</mat-label>
-          <input
-            matInput
-            formControlName="myDomains"
-            type="text"
-            autocomplete="off"
-          />
-          <mat-hint
-            >Comma-separated list with domains that will be used as
-            third-level-domains (e.g. server1.mydomain.com instead of just
-            mydomain.com).</mat-hint
-          >
-          <mat-error *ngIf="optionsForm.get('myDomains').invalid">{{
-            getErrorMessageForField("myDomains")
-          }}</mat-error>
-        </mat-form-field>
-      </p>
-
-      <p>
         <mat-form-field appearance="fill" hideRequiredMarker="true">
           <mat-label>Special Chars</mat-label>
           <input
