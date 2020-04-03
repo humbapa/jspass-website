@@ -12,6 +12,7 @@ function createpassword(
     iterations: iterations,
   });
   passwordwordsarray = passwordobj.words;
+  console.log(passwordwordsarray);
 
   chars1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   chars2 = "abcdefghijklmnopqrstuvwxyz";
