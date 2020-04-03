@@ -29,7 +29,10 @@
               "src/manifest.webmanifest"
             ],
             "styles": ["src/custom-theme.scss"],
-            "scripts": []
+            "scripts": [
+              "src/assets/jspass-v1/pbkdf2.js",
+              "src/assets/jspass-v1/popup.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -94,7 +97,10 @@
               "src/manifest.webmanifest"
             ],
             "styles": ["src/custom-theme.scss"],
-            "scripts": []
+            "scripts": [
+              "src/assets/jspass-v1/pbkdf2.js",
+              "src/assets/jspass-v1/popup.js"
+            ]
           }
         },
         "lint": {

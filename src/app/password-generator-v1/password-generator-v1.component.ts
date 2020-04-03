@@ -6,6 +6,8 @@ import { OptionsService, VERSION } from '../options.service';
 import { IntroBottomSheetComponent } from '../intro-bottom-sheet/intro-bottom-sheet.component';
 import { PasswordGeneratorDialogComponent } from '../password-generator-dialog/password-generator-dialog.component';
 
+declare const createpassword: any;
+
 @Component({
   selector: 'app-password-generator-v1',
   templateUrl: './password-generator-v1.component.html',
@@ -14,7 +16,7 @@ import { PasswordGeneratorDialogComponent } from '../password-generator-dialog/p
 export class PasswordGeneratorV1Component implements OnInit {
   passwordGeneratorForm: FormGroup;
 
-  @ViewChild('domainField') domainField;
+  @ViewChild('passwordField') passwordField;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,7 +44,15 @@ export class PasswordGeneratorV1Component implements OnInit {
       return;
     }
 
-    const password = 'asdf';
+    const password = createpassword(
+      this.passwordGeneratorForm.value.password,
+      this.passwordGeneratorForm.value.domain,
+      options.salt,
+      options.passwordLength,
+      options.iterations,
+      this.passwordGeneratorForm.value.useSpecialChars,
+      options.specialChars
+    );
     const dialogRef = this.dialog.open(PasswordGeneratorDialogComponent, {
       data: {
         password,
@@ -50,7 +60,7 @@ export class PasswordGeneratorV1Component implements OnInit {
     });
     dialogRef.afterClosed().subscribe(() => {
       this.passwordGeneratorForm.patchValue({ password: '' });
-      this.domainField.nativeElement.focus();
+      this.passwordField.nativeElement.focus();
     });
   }
 }
