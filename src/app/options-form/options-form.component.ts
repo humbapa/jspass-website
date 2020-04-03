@@ -48,10 +48,11 @@ export class OptionsFormComponent implements OnInit, OnDestroy {
       this.snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {
         data: {
           message:
-            'Generated initial random values for salt and iterations, refresh the page to generate new ones.',
-          duration: 8000,
+            'Using initial random values for salt and iterations. Please refresh the page to generate new ones.',
+          icon: 'refresh',
+          duration: 5000,
         },
-        duration: 8000,
+        duration: 5000,
       });
     } else {
       this.optionsForm.patchValue(options);
@@ -68,7 +69,7 @@ export class OptionsFormComponent implements OnInit, OnDestroy {
     const options = { version: this.version, ...this.optionsForm.value };
     this.optionsService.storeOptions(options);
     this.snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {
-      data: { message: 'Options successfully saved.' },
+      data: { message: 'Options saved successfully.', icon: 'save' },
     });
   }
 

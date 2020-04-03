@@ -32,6 +32,7 @@ import {
 } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { AppComponent } from './app.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
@@ -81,12 +82,13 @@ import { PasswordGeneratorDialogComponent } from './password-generator-dialog/pa
     MatDialogModule,
     MatAutocompleteModule,
     MatGridListModule,
+    MatChipsModule,
   ],
   providers: [
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: {
-        duration: 5000,
+        duration: 2000,
         verticalPosition: 'top',
         panelClass: 'jspass-snack-bar',
       },

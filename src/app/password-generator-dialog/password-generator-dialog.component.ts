@@ -43,10 +43,9 @@ export class PasswordGeneratorDialogComponent implements OnInit, AfterViewInit {
         this.passwordField.nativeElement.value = '';
         this.snackBar.openFromComponent(SnackBarComponent, {
           data: {
-            message: 'Site password copied to clipbard.',
-            duration: 2000,
+            message: 'Copied your password to clipboard.',
+            icon: 'assignment',
           },
-          duration: 2000,
         });
         this.dialogRef.close();
       });

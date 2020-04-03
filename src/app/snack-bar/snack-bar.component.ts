@@ -10,8 +10,9 @@ import {
   styleUrls: ['./snack-bar.component.scss'],
 })
 export class SnackBarComponent implements OnInit {
-  duration = 5000;
+  duration = 2000;
   message = '';
+  icon = 'thumb_up';
   progressValue = 0;
   private animationStart: number;
 
@@ -22,6 +23,10 @@ export class SnackBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = this.data.message;
+    if (this.data.icon) {
+      this.icon = this.data.icon;
+    }
+
     if (this.data.duration) {
       this.duration = this.data.duration;
     }

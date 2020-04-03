@@ -60,7 +60,7 @@ $jspass-light-theme-inverse: mat-light-theme(
   }
 
   .jspass-snack-bar {
-    background-color: mat-color($jspass-light-warn, lighter);
+    background-color: mat-color($jspass-light-primary, darker);
     color: black;
   }
 }
@@ -79,6 +79,7 @@ $jspass-dark-theme: mat-dark-theme(
 
   main {
     background-color: mat-color($jspass-dark-primary, darker);
+    min-height: calc(100% - 96px);
   }
 
   a {
@@ -86,7 +87,7 @@ $jspass-dark-theme: mat-dark-theme(
   }
 
   .jspass-snack-bar {
-    background-color: mat-color($jspass-dark-warn, darker);
+    background-color: mat-color($jspass-dark-accent, darker);
   }
 }
 
@@ -100,7 +101,6 @@ body {
 
 main {
   padding: 16px;
-  min-height: calc(100% - 88px);
 }
 
 .fill-remaining-space {
