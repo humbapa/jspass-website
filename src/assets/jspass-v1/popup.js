@@ -1,3 +1,5 @@
+// Source: https://github.com/humbapa/jspass/blob/v1/popup.js
+
 function createpassword(
   masterpassword,
   domainname,
@@ -12,6 +14,7 @@ function createpassword(
     iterations: iterations,
   });
   passwordwordsarray = passwordobj.words;
+
   console.log(passwordwordsarray);
 
   chars1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

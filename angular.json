@@ -30,7 +30,10 @@
             ],
             "styles": ["src/custom-theme.scss"],
             "scripts": [
-              "src/assets/jspass-v1/pbkdf2.js",
+              "resources/CryptoJS v3.0.2/components/core.js",
+              "resources/CryptoJS v3.0.2/components/sha1.js",
+              "resources/CryptoJS v3.0.2/components/hmac.js",
+              "resources/CryptoJS v3.0.2/components/pbkdf2.js",
               "src/assets/jspass-v1/popup.js"
             ]
           },
@@ -98,7 +101,10 @@
             ],
             "styles": ["src/custom-theme.scss"],
             "scripts": [
-              "src/assets/jspass-v1/pbkdf2.js",
+              "resources/CryptoJS v3.0.2/components/core.js",
+              "resources/CryptoJS v3.0.2/components/sha1.js",
+              "resources/CryptoJS v3.0.2/components/hmac.js",
+              "resources/CryptoJS v3.0.2/components/pbkdf2.js",
               "src/assets/jspass-v1/popup.js"
             ]
           }
