@@ -34,12 +34,12 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
     private bottomSheet: MatBottomSheet,
     private dialog: MatDialog
   ) {
+    const options = this.optionsService.getOptionsForVersion(VERSION.TWO);
+    const passwordLength = (options && options.passwordLength) || 15;
     this.passwordGeneratorForm = this.formBuilder.group({
       domain: [''],
       password: [''],
-      passwordLength: [
-        this.optionsService.getOptionsForVersion(VERSION.TWO).passwordLength,
-      ],
+      passwordLength: [passwordLength],
       useSpecialChars: [true],
       minSpecialChars: 2,
       useNumbers: [true],
