@@ -103,14 +103,6 @@ export class PasswordGeneratorV1Component implements OnInit, OnDestroy {
       VERSION.ONE
     );
 
-    console.log('generating legacy password with', [
-      this.passwordGeneratorForm.value.domain.toLowerCase().trim(),
-      options.salt,
-      options.passwordLength,
-      options.iterations,
-      this.passwordGeneratorForm.value.useSpecialChars,
-      options.specialChars,
-    ]);
     const password = createpassword(
       this.passwordGeneratorForm.value.password.trim(),
       this.passwordGeneratorForm.value.domain.toLowerCase().trim(),

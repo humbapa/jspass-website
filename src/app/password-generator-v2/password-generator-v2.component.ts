@@ -135,17 +135,6 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
       VERSION.TWO
     );
 
-    console.log('generating password with', [
-      this.passwordGeneratorForm.value.domain.toLowerCase().trim(),
-      options.salt,
-      options.iterations,
-      options.specialChars,
-      options.passwordLength,
-      this.passwordGeneratorForm.value.useSpecialChars,
-      this.passwordGeneratorForm.value.minSpecialChars,
-      this.passwordGeneratorForm.value.useNumbers,
-      this.passwordGeneratorForm.value.minNumbers,
-    ]);
     createPasswordForDomainname(
       this.passwordGeneratorForm.value.domain.toLowerCase().trim(),
       this.passwordGeneratorForm.value.password.trim(),
