@@ -33,6 +33,12 @@ export class PasswordGeneratorDialogComponent implements OnInit, AfterViewInit {
     this.changeDetector.detectChanges();
   }
 
+  close(event): void {
+    event.preventDefault();
+    this.passwordField.nativeElement.value = '';
+    this.dialogRef.close();
+  }
+
   copyAndClose(event): void {
     event.preventDefault();
     this.passwordField.nativeElement.focus();

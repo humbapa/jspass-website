@@ -7,14 +7,18 @@ mat-card-content > p {
 }
 
 mat-card-actions {
-  text-align: right;
+  display: flex;
+  padding: 8px 0;
+  margin: 2em 0;
 }
 
 mat-card-actions button {
-  margin-right: 8px;
-  margin-bottom: 2em;
+  flex-grow: 1;
 }
 
+mat-card-actions button[type='submit'] {
+  flex-grow: 2;
+}
 .header-icon {
   font-size: 48px;
   margin-top: -4px;
