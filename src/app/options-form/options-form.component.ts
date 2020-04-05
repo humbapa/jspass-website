@@ -67,7 +67,7 @@ export class OptionsFormComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     const options = { version: this.version, ...this.optionsForm.value };
-    options.salt = options.salt.toLowerCase().replace(/\s/g, '');
+    options.salt = options.salt.toLowerCase().replace(/[^a-f0-9]/g, '');
     options.specialChars = options.specialChars.replace(/\s/g, '');
     this.optionsForm.patchValue({
       salt: options.salt,
