@@ -9,6 +9,18 @@ function createpassword(
   usespecialchars,
   specialchars
 ) {
+  console.log(
+    typeof masterpassword,
+    typeof domainname,
+    typeof salt,
+    typeof passwordlength,
+    typeof iterations,
+    typeof usespecialchars,
+    typeof specialchars
+  );
+
+  console.dir(Math);
+
   passwordobj = CryptoJS.PBKDF2(masterpassword + domainname, salt, {
     keySize: passwordlength,
     iterations: iterations,
