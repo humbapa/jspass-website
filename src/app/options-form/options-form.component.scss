@@ -14,10 +14,13 @@ mat-card-actions {
 
 mat-card-actions button {
   flex-grow: 1;
+  margin-right: 8px;
 }
 
 mat-card-actions button[type='submit'] {
   flex-grow: 2;
+  margin-right: 0px;
+  margin-left: 8px;
 }
 .header-icon {
   font-size: 48px;
