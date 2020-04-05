@@ -33,8 +33,7 @@
               "resources/CryptoJS v3.0.2/components/core.js",
               "resources/CryptoJS v3.0.2/components/sha1.js",
               "resources/CryptoJS v3.0.2/components/hmac.js",
-              "resources/CryptoJS v3.0.2/components/pbkdf2.js",
-              "src/assets/jspass-v1/popup.js"
+              "resources/CryptoJS v3.0.2/components/pbkdf2.js"
             ]
           },
           "configurations": {
@@ -104,8 +103,7 @@
               "resources/CryptoJS v3.0.2/components/core.js",
               "resources/CryptoJS v3.0.2/components/sha1.js",
               "resources/CryptoJS v3.0.2/components/hmac.js",
-              "resources/CryptoJS v3.0.2/components/pbkdf2.js",
-              "src/assets/jspass-v1/popup.js"
+              "resources/CryptoJS v3.0.2/components/pbkdf2.js"
             ]
           }
         },

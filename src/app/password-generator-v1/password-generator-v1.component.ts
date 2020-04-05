@@ -10,7 +10,7 @@ import { SiteSettings } from '../site-settings';
 import { Observable, Subject } from 'rxjs';
 import { startWith, map, takeUntil } from 'rxjs/operators';
 
-declare const createpassword: any;
+declare const CryptoJS: any;
 
 @Component({
   selector: 'app-password-generator-v1',
@@ -103,7 +103,7 @@ export class PasswordGeneratorV1Component implements OnInit, OnDestroy {
       VERSION.ONE
     );
 
-    const password = createpassword(
+    const password = this.createpassword(
       this.passwordGeneratorForm.value.password.trim(),
       this.passwordGeneratorForm.value.domain.toLowerCase().trim(),
       options.salt,
@@ -123,5 +123,77 @@ export class PasswordGeneratorV1Component implements OnInit, OnDestroy {
     });
 
     this.allDomains = this.siteSettingsService.getUsedDomainList(VERSION.ONE);
+  }
+
+  // Source: https://github.com/humbapa/jspass/blob/v1/popup.js
+
+  createpassword(
+    masterpassword,
+    domainname,
+    salt,
+    passwordlength,
+    iterations,
+    usespecialchars,
+    specialchars
+  ): string {
+    const passwordobj = CryptoJS.PBKDF2(masterpassword + domainname, salt, {
+      keySize: passwordlength,
+      iterations,
+    });
+    const passwordwordsarray = passwordobj.words;
+
+    const chars1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const chars2 = 'abcdefghijklmnopqrstuvwxyz';
+    const chars3 = '0123456789';
+    const chars4 = specialchars;
+    let chars = chars1 + chars2 + chars3;
+    if (usespecialchars) {
+      chars += chars4;
+    }
+    let chars1count = 0;
+    let chars2count = 0;
+    let chars3count = 0;
+    let chars4count = 0;
+
+    let password = '';
+    let passwordchar = '';
+    const charscheckindex = Math.floor(passwordlength / 3);
+
+    for (let i = 0; i < passwordlength; i++) {
+      let charstemp = chars;
+      if (i >= charscheckindex) {
+        if (usespecialchars && chars4count <= 2) {
+          charstemp = chars4;
+        } else if (chars1count <= 1) {
+          charstemp = chars1;
+        } else if (chars2count <= 1) {
+          charstemp = chars2;
+        } else if (chars3count <= 1) {
+          charstemp = chars3;
+        }
+      }
+      do {
+        let charsindextemp = Math.abs(passwordwordsarray[i]) % charstemp.length;
+        if (passwordwordsarray[i] < 0) {
+          charsindextemp = charstemp.length - 1 - charsindextemp;
+        }
+        passwordwordsarray[i] += passwordwordsarray[i] + 1;
+        passwordchar = charstemp[charsindextemp];
+      } while (password.indexOf(passwordchar) > -1);
+
+      if (chars1.indexOf(passwordchar) > -1) {
+        chars1count++;
+      } else if (chars2.indexOf(passwordchar) > -1) {
+        chars2count++;
+      } else if (chars3.indexOf(passwordchar) > -1) {
+        chars3count++;
+      } else if (usespecialchars && chars4.indexOf(passwordchar) > -1) {
+        chars4count++;
+      }
+
+      password += passwordchar;
+    }
+
+    return password;
   }
 }
