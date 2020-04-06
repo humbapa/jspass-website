@@ -1,5 +1,9 @@
 {
   "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "appData": {
+    "releaseNotes": "",
+    "forceUpdate": false
+  },
   "index": "/index.html",
   "assetGroups": [
     {

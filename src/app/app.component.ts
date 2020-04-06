@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { OptionsService, DEFAULT_VERSION, VERSION } from './options.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +22,9 @@ export class AppComponent implements OnInit {
 
   constructor(
     private optionsService: OptionsService,
-    private overlayContainer: OverlayContainer
+    private overlayContainer: OverlayContainer,
+    private swUpdate: SwUpdate,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -34,6 +39,33 @@ export class AppComponent implements OnInit {
       this.theme = 'dark';
       this.updateTheme();
     }
+
+    this.swUpdate.available.subscribe((event) => {
+      const appData: any = event.available.appData;
+
+      if (!appData.forceUpdate) {
+        this.snackBar.openFromComponent(SnackBarComponent, {
+          data: {
+            message: `There is an update available. Please refresh the page to activate it. ${appData.releaseNotes}`,
+            icon: 'system_update',
+            duration: 5000,
+          },
+          duration: 5000,
+        });
+      } else {
+        const snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {
+          data: {
+            message: `There is an update available. The current page will reload automatically to activate it. ${appData.releaseNotes}`,
+            icon: 'system_update',
+            duration: 5000,
+          },
+          duration: 5000,
+        });
+        snackBarRef.afterDismissed().subscribe(() => {
+          this.swUpdate.activateUpdate().then(() => document.location.reload());
+        });
+      }
+    });
   }
 
   toggleVersion(event) {
