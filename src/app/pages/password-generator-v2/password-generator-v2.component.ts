@@ -119,7 +119,7 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
     }
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     if (!this.passwordGeneratorForm.valid) {
       return;
     }
@@ -142,7 +142,7 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
       VERSION.TWO
     );
 
-    createPasswordForDomainname(
+    const password = await this.createPasswordAsync(
       this.passwordGeneratorForm.value.domain.toLowerCase().trim(),
       this.passwordGeneratorForm.value.password.trim(),
       {
@@ -154,19 +154,38 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
         minspecialchars: this.passwordGeneratorForm.value.minSpecialChars,
         usenumbers: this.passwordGeneratorForm.value.useNumbers,
         minnumbers: this.passwordGeneratorForm.value.minNumbers,
-      }
-    ).then((password) => {
-      const dialogRef = this.dialog.open(PasswordGeneratorDialogComponent, {
-        data: {
-          password,
-        },
-      });
-      dialogRef.afterClosed().subscribe(() => {
-        this.passwordGeneratorForm.patchValue({ password: '' });
-        this.passwordField.nativeElement.focus();
-      });
+      } as CreatePasswordOptions
+    );
+
+    const dialogRef = this.dialog.open(PasswordGeneratorDialogComponent, {
+      data: {
+        password,
+      },
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.passwordGeneratorForm.patchValue({ password: '' });
+      this.passwordField.nativeElement.focus();
     });
 
     this.allDomains = this.siteSettingsService.getUsedDomainList(VERSION.TWO);
   }
+
+  async createPasswordAsync(
+    domain: string,
+    password: string,
+    options: CreatePasswordOptions
+  ): Promise<string> {
+    return await createPasswordForDomainname(domain, password, options);
+  }
+}
+
+class CreatePasswordOptions {
+  salt: string;
+  iterations: number;
+  specialchars: string;
+  passwordlength: number;
+  usespecialchars: boolean;
+  minspecialchars: number;
+  usenumbers: boolean;
+  minnumbers: number;
 }
