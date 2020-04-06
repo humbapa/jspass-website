@@ -50,4 +50,44 @@ describe('PasswordGeneratorV2Component', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create password with special chars and numbers', async () => {
+    fixture = TestBed.createComponent(PasswordGeneratorV2Component);
+    component = fixture.componentInstance;
+    const password = await component.createPasswordAsync(
+      'somesite.com',
+      'asdf',
+      {
+        salt: 'a1b2c3d4',
+        passwordlength: 15,
+        iterations: 99,
+        specialchars: '@!?_#%.-*&$^:',
+        usespecialchars: true,
+        minspecialchars: 2,
+        usenumbers: true,
+        minnumbers: 2,
+      }
+    );
+    expect(password).toEqual('j^552IWCFlJLg_L');
+  });
+
+  it('should create password with special chars and numbers but different password', async () => {
+    fixture = TestBed.createComponent(PasswordGeneratorV2Component);
+    component = fixture.componentInstance;
+    const password = await component.createPasswordAsync(
+      'somesite.com',
+      'asdfg',
+      {
+        salt: 'a1b2c3d4',
+        passwordlength: 15,
+        iterations: 99,
+        specialchars: '@!?_#%.-*&$^:',
+        usespecialchars: true,
+        minspecialchars: 2,
+        usenumbers: true,
+        minnumbers: 2,
+      }
+    );
+    expect(password).toEqual('W2a_4P9pp!LsJ3r');
+  });
 });

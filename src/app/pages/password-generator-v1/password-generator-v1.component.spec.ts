@@ -50,4 +50,49 @@ describe('PasswordGeneratorV1Component', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create password with special chars', () => {
+    fixture = TestBed.createComponent(PasswordGeneratorV1Component);
+    component = fixture.componentInstance;
+    const password = component.createpassword(
+      'asdf',
+      'somesite.com',
+      'a1b2c3d4',
+      15,
+      99,
+      true,
+      '!#$%&()*+,-./:;<=>?@[]^_`{|}~'
+    );
+    expect(password).toEqual('HOeA5>+*i8RCLIZ');
+  });
+
+  it('should create password with special chars but different password', () => {
+    fixture = TestBed.createComponent(PasswordGeneratorV1Component);
+    component = fixture.componentInstance;
+    const password = component.createpassword(
+      'asdfg',
+      'somesite.com',
+      'a1b2c3d4',
+      15,
+      99,
+      true,
+      '!#$%&()*+,-./:;<=>?@[]^_`{|}~'
+    );
+    expect(password).toEqual('zqJ8L;<,4B`NbUC');
+  });
+
+  it('should create password without special chars', () => {
+    fixture = TestBed.createComponent(PasswordGeneratorV1Component);
+    component = fixture.componentInstance;
+    const password = component.createpassword(
+      'asdf',
+      'somesite.com',
+      'a1b2c3d4',
+      15,
+      99,
+      false,
+      '!#$%&()*+,-./:;<=>?@[]^_`{|}~'
+    );
+    expect(password).toEqual('fSqOJ836woPUajb');
+  });
 });
