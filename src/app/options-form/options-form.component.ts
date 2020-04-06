@@ -1,27 +1,27 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 import { OptionsService } from '../options.service';
 import { CryptoService } from '../crypto.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-options-form',
   templateUrl: './options-form.component.html',
   styleUrls: ['./options-form.component.scss'],
 })
-export class OptionsFormComponent implements OnInit, OnDestroy {
+export class OptionsFormComponent implements OnInit {
   optionsForm: FormGroup;
 
   @Input() version: number;
-
-  private snackBarRef: MatSnackBarRef<SnackBarComponent>;
 
   constructor(
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private optionsService: OptionsService,
-    private cryptoService: CryptoService
+    private cryptoService: CryptoService,
+    private router: Router
   ) {
     this.optionsForm = this.formBuilder.group({
       salt: [''],
@@ -45,7 +45,7 @@ export class OptionsFormComponent implements OnInit, OnDestroy {
         });
       }
 
-      this.snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {
+      this.snackBar.openFromComponent(SnackBarComponent, {
         data: {
           message:
             'Using initial random values for salt and iterations. Please refresh the page to generate new ones.',
@@ -59,24 +59,42 @@ export class OptionsFormComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-    if (this.snackBarRef) {
-      this.snackBarRef.dismiss();
-    }
-  }
-
   onSubmit(): void {
     const options = { version: this.version, ...this.optionsForm.value };
+
+    const originalSaltLength = options.salt.length;
+    const originalSpecialCharsLength = options.specialChars.length;
     options.salt = options.salt.toLowerCase().replace(/[^a-f0-9]/g, '');
-    options.specialChars = options.specialChars.replace(/\s/g, '');
+    options.specialChars = options.specialChars.replace(
+      /[\s\n\ra-zA-Z0-9]/g,
+      ''
+    );
     this.optionsForm.patchValue({
       salt: options.salt,
       specialChars: options.specialChars,
     });
+
     this.optionsService.storeOptions(options);
-    this.snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {
-      data: { message: 'Options saved successfully.', icon: 'save' },
-    });
+
+    if (
+      options.salt.length !== originalSaltLength ||
+      options.specialChars.length !== originalSpecialCharsLength
+    ) {
+      this.snackBar.openFromComponent(SnackBarComponent, {
+        data: {
+          message:
+            'One or more not allowed characters have been removed. Please recheck and save again.',
+          icon: 'warning',
+          duration: 5000,
+        },
+        duration: 5000,
+      });
+    } else {
+      this.snackBar.openFromComponent(SnackBarComponent, {
+        data: { message: 'Options successfully saved.', icon: 'save' },
+      });
+      this.router.navigate(['']);
+    }
   }
 
   getErrorMessageForField(fieldName): string {

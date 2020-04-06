@@ -76,7 +76,7 @@
 
       <p>
         <mat-form-field appearance="fill" hideRequiredMarker="true">
-          <mat-label>Special Chars</mat-label>
+          <mat-label>Special chars</mat-label>
           <input
             matInput
             formControlName="specialChars"
@@ -92,7 +92,7 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-flat-button routerLink="/">
+      <button mat-flat-button type="button" routerLink="/">
         Close
       </button>
       <button
@@ -101,7 +101,7 @@
         type="submit"
         [disabled]="!optionsForm.valid"
       >
-        Save
+        Save & Close
       </button>
     </mat-card-actions>
   </mat-card>
