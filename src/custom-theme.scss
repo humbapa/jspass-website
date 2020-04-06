@@ -84,6 +84,10 @@ $jspass-dark-theme: mat-dark-theme(
   .jspass-snack-bar {
     background-color: mat-color($jspass-dark-accent, darker);
   }
+
+  .mat-input-element {
+    caret-color: mat-color($jspass-dark-accent);
+  }
 }
 
 body.jspass-dark-theme {
