@@ -8,6 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "postinstall": "ngcc",
     "deploy": "rm -Rf ./dist/jspass-website/ && git fetch --recurse-submodules && git pull --recurse-submodules && ng build --prod"
   },
   "private": true,
