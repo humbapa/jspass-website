@@ -38,14 +38,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
 
 import { AppComponent } from './app.component';
-import { SnackBarComponent } from './snack-bar/snack-bar.component';
-import { OptionsPageComponent } from './options-page/options-page.component';
-import { OptionsFormComponent } from './options-form/options-form.component';
-import { IntroBottomSheetComponent } from './intro-bottom-sheet/intro-bottom-sheet.component';
-import { PasswordGeneratorPageComponent } from './password-generator-page/password-generator-page.component';
-import { PasswordGeneratorV1Component } from './password-generator-v1/password-generator-v1.component';
-import { PasswordGeneratorV2Component } from './password-generator-v2/password-generator-v2.component';
-import { PasswordGeneratorDialogComponent } from './password-generator-dialog/password-generator-dialog.component';
+import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+import { IntroBottomSheetComponent } from './components/intro-bottom-sheet/intro-bottom-sheet.component';
+import { OptionsPageComponent } from './pages/options-page/options-page.component';
+import { OptionsFormComponent } from './pages/options-form/options-form.component';
+import { PasswordGeneratorPageComponent } from './pages/password-generator-page/password-generator-page.component';
+import { PasswordGeneratorV1Component } from './pages/password-generator-v1/password-generator-v1.component';
+import { PasswordGeneratorV2Component } from './pages/password-generator-v2/password-generator-v2.component';
+import { PasswordGeneratorDialogComponent } from './pages/password-generator-dialog/password-generator-dialog.component';
 
 @NgModule({
   declarations: [

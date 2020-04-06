@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { OptionsService, DEFAULT_VERSION, VERSION } from './options.service';
+import {
+  OptionsService,
+  DEFAULT_VERSION,
+  VERSION,
+} from './services/options.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { SwUpdate } from '@angular/service-worker';
 
 @Component({

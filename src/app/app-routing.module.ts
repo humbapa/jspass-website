@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { OptionsPageComponent } from './options-page/options-page.component';
-import { PasswordGeneratorPageComponent } from './password-generator-page/password-generator-page.component';
+import { OptionsPageComponent } from './pages/options-page/options-page.component';
+import { PasswordGeneratorPageComponent } from './pages/password-generator-page/password-generator-page.component';
 
 const routes: Routes = [
   { path: '', component: PasswordGeneratorPageComponent },

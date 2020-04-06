@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { OptionsService, VERSION } from '../options.service';
-import { IntroBottomSheetComponent } from '../intro-bottom-sheet/intro-bottom-sheet.component';
+import { OptionsService, VERSION } from '../../services/options.service';
+import { IntroBottomSheetComponent } from '../../components/intro-bottom-sheet/intro-bottom-sheet.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

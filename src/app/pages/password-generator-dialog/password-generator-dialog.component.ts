@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import { SnackBarComponent } from '../../components/snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-password-generator-dialog',
