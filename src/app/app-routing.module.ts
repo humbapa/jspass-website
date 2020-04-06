@@ -7,6 +7,7 @@ import { PasswordGeneratorPageComponent } from './password-generator-page/passwo
 const routes: Routes = [
   { path: '', component: PasswordGeneratorPageComponent },
   { path: 'options', component: OptionsPageComponent },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
