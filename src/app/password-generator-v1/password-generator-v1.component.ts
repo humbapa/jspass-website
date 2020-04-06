@@ -9,6 +9,7 @@ import { PasswordGeneratorDialogComponent } from '../password-generator-dialog/p
 import { SiteSettings } from '../site-settings';
 import { Observable, Subject } from 'rxjs';
 import { startWith, map, takeUntil } from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 declare const CryptoJS: any;
 
@@ -82,6 +83,12 @@ export class PasswordGeneratorV1Component implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.unsubscribeDomainField.next();
     this.unsubscribeDomainField.complete();
+  }
+
+  domainSelected(event: MatAutocompleteSelectedEvent): void {
+    if (event.option.value !== '') {
+      this.passwordField.nativeElement.focus();
+    }
   }
 
   onSubmit(): void {

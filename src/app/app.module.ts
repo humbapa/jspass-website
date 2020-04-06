@@ -30,7 +30,10 @@ import {
   MatDialogModule,
   MAT_DIALOG_DEFAULT_OPTIONS,
 } from '@angular/material/dialog';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {
+  MatAutocompleteModule,
+  MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
+} from '@angular/material/autocomplete';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
 
@@ -100,6 +103,12 @@ import { PasswordGeneratorDialogComponent } from './password-generator-dialog/pa
         autoFocus: false,
         width: 384,
         closeOnNavigation: true,
+      },
+    },
+    {
+      provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
+      useValue: {
+        autoActiveFirstOption: true,
       },
     },
   ],

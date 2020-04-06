@@ -11,6 +11,7 @@ import { Observable, Subject } from 'rxjs';
 import { startWith, map, takeUntil } from 'rxjs/operators';
 
 import { createPasswordForDomainname } from '../../../resources/jspass/modules/crypto';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-password-generator-v2',
@@ -112,6 +113,12 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
     this.unsubscribeField.complete();
   }
 
+  domainSelected(event: MatAutocompleteSelectedEvent): void {
+    if (event.option.value !== '') {
+      this.passwordField.nativeElement.focus();
+    }
+  }
+
   onSubmit(): void {
     if (!this.passwordGeneratorForm.valid) {
       return;
@@ -142,7 +149,7 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
         salt: options.salt,
         iterations: options.iterations,
         specialchars: options.specialChars,
-        passwordlength: options.passwordLength,
+        passwordlength: this.passwordGeneratorForm.value.passwordLength,
         usespecialchars: this.passwordGeneratorForm.value.useSpecialChars,
         minspecialchars: this.passwordGeneratorForm.value.minSpecialChars,
         usenumbers: this.passwordGeneratorForm.value.useNumbers,
