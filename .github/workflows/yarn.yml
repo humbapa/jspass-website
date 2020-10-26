@@ -24,7 +24,7 @@ jobs:
         with:
           cmd: build # will run `yarn build` command
       - name: Install chromium-browser
-        run: sudo apt-get -y install chromium-browser
+        run: sudo apt-get update && sudo apt-get -y install chromium-browser
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: test # will run `yarn test` command
