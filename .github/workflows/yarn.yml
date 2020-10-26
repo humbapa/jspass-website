@@ -28,3 +28,5 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: test # will run `yarn test` command
+        env:
+          CHROME_BIN: /usr/bin/chromium
