@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PasswordGeneratorV2Component } from './password-generator-v2.component';
 
@@ -12,34 +12,36 @@ describe('PasswordGeneratorV2Component', () => {
   let component: PasswordGeneratorV2Component;
   let fixture: ComponentFixture<PasswordGeneratorV2Component>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [PasswordGeneratorV2Component],
-      providers: [
-        {
-          provide: FormBuilder,
-          useValue: {
-            group: () => {
-              return {
-                get: () => {
-                  return {
-                    valueChanges: {
-                      pipe: () => {
-                        return { subscribe: () => {} };
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [PasswordGeneratorV2Component],
+        providers: [
+          {
+            provide: FormBuilder,
+            useValue: {
+              group: () => {
+                return {
+                  get: () => {
+                    return {
+                      valueChanges: {
+                        pipe: () => {
+                          return { subscribe: () => {} };
+                        },
                       },
-                    },
-                  };
-                },
-              };
+                    };
+                  },
+                };
+              },
             },
           },
-        },
-        { provide: MatBottomSheet, useValue: {} },
-        { provide: MatDialog, useValue: {} },
-      ],
-      imports: [MatAutocompleteModule],
-    }).compileComponents();
-  }));
+          { provide: MatBottomSheet, useValue: {} },
+          { provide: MatDialog, useValue: {} },
+        ],
+        imports: [MatAutocompleteModule],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PasswordGeneratorV2Component);

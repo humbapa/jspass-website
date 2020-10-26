@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OptionsFormComponent } from './options-form.component';
 
@@ -10,38 +10,40 @@ describe('OptionsFormComponent', () => {
   let component: OptionsFormComponent;
   let fixture: ComponentFixture<OptionsFormComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [OptionsFormComponent],
-      providers: [
-        {
-          provide: FormBuilder,
-          useValue: {
-            group: () => {
-              return {
-                get: () => {
-                  return {
-                    invalid: true,
-                    errors: {
-                      required: false,
-                    },
-                  };
-                },
-                patchValue: () => {},
-              };
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [OptionsFormComponent],
+        providers: [
+          {
+            provide: FormBuilder,
+            useValue: {
+              group: () => {
+                return {
+                  get: () => {
+                    return {
+                      invalid: true,
+                      errors: {
+                        required: false,
+                      },
+                    };
+                  },
+                  patchValue: () => {},
+                };
+              },
             },
           },
-        },
-        {
-          provide: MatSnackBar,
-          useValue: {
-            openFromComponent: () => {},
+          {
+            provide: MatSnackBar,
+            useValue: {
+              openFromComponent: () => {},
+            },
           },
-        },
-        { provide: Router, useValue: {} },
-      ],
-    }).compileComponents();
-  }));
+          { provide: Router, useValue: {} },
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(OptionsFormComponent);

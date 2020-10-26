@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
@@ -8,21 +8,23 @@ import { SwUpdate } from '@angular/service-worker';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [RouterTestingModule, MatMenuModule],
-      declarations: [AppComponent],
-      providers: [
-        {
-          provide: SwUpdate,
-          useValue: {
-            available: { subscribe: () => {} },
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule, MatMenuModule],
+        declarations: [AppComponent],
+        providers: [
+          {
+            provide: SwUpdate,
+            useValue: {
+              available: { subscribe: () => {} },
+            },
           },
-        },
-        { provide: MatSnackBar, useValue: {} },
-      ],
-    }).compileComponents();
-  }));
+          { provide: MatSnackBar, useValue: {} },
+        ],
+      }).compileComponents();
+    })
+  );
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);

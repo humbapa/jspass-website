@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PasswordGeneratorDialogComponent } from './password-generator-dialog.component';
 
@@ -9,16 +9,18 @@ describe('PasswordGeneratorDialogComponent', () => {
   let component: PasswordGeneratorDialogComponent;
   let fixture: ComponentFixture<PasswordGeneratorDialogComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [PasswordGeneratorDialogComponent],
-      providers: [
-        { provide: MAT_DIALOG_DATA, useValue: {} },
-        { provide: MatDialogRef, useValue: {} },
-        { provide: MatSnackBar, useValue: {} },
-      ],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [PasswordGeneratorDialogComponent],
+        providers: [
+          { provide: MAT_DIALOG_DATA, useValue: {} },
+          { provide: MatDialogRef, useValue: {} },
+          { provide: MatSnackBar, useValue: {} },
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PasswordGeneratorDialogComponent);

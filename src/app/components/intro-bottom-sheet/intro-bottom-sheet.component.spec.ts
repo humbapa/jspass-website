@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IntroBottomSheetComponent } from './intro-bottom-sheet.component';
 
@@ -9,15 +9,17 @@ describe('IntroBottomSheetComponent', () => {
   let component: IntroBottomSheetComponent;
   let fixture: ComponentFixture<IntroBottomSheetComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [IntroBottomSheetComponent],
-      providers: [
-        { provide: MatBottomSheetRef, useValue: {} },
-        { provide: Router, useValue: {} },
-      ],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [IntroBottomSheetComponent],
+        providers: [
+          { provide: MatBottomSheetRef, useValue: {} },
+          { provide: Router, useValue: {} },
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(IntroBottomSheetComponent);
