@@ -29,7 +29,9 @@
               "src/manifest.webmanifest",
               "src/robots.txt"
             ],
-            "styles": ["src/custom-theme.scss"],
+            "styles": [
+              "src/custom-theme.scss"
+            ],
             "scripts": [
               "resources/CryptoJS v3.0.2/components/core.js",
               "resources/CryptoJS v3.0.2/components/sha1.js",
@@ -98,7 +100,9 @@
               "src/assets",
               "src/manifest.webmanifest"
             ],
-            "styles": ["src/custom-theme.scss"],
+            "styles": [
+              "src/custom-theme.scss"
+            ],
             "scripts": [
               "resources/CryptoJS v3.0.2/components/core.js",
               "resources/CryptoJS v3.0.2/components/sha1.js",
@@ -108,14 +112,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         },
         "e2e": {

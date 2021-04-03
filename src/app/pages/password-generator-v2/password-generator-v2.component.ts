@@ -19,12 +19,12 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
   styleUrls: ['./password-generator-v2.component.scss'],
 })
 export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
+  @ViewChild('passwordField') passwordField;
+
   passwordGeneratorForm: FormGroup;
   allDomains: string[];
   filteredDomains: Observable<string[]>;
   currentSettings: SiteSettings;
-
-  @ViewChild('passwordField') passwordField;
 
   private unsubscribeField: Subject<void> = new Subject();
 
@@ -35,7 +35,7 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
     private bottomSheet: MatBottomSheet,
     private dialog: MatDialog
   ) {
-    const options = this.optionsService.getOptionsForVersion(VERSION.TWO);
+    const options = this.optionsService.getOptionsForVersion(VERSION.two);
     const passwordLength = (options && options.passwordLength) || 15;
     this.passwordGeneratorForm = this.formBuilder.group({
       domain: [''],
@@ -49,7 +49,7 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.allDomains = this.siteSettingsService.getUsedDomainList(VERSION.TWO);
+    this.allDomains = this.siteSettingsService.getUsedDomainList(VERSION.two);
     this.filteredDomains = this.passwordGeneratorForm
       .get('domain')
       .valueChanges.pipe(
@@ -74,7 +74,7 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
           .setValue(value.toLowerCase(), { emitEvent: false });
         const settings = this.siteSettingsService.getSettingsForDomain(
           value,
-          VERSION.TWO
+          VERSION.two
         );
         if (
           settings &&
@@ -127,7 +127,7 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
       return;
     }
 
-    const options = this.optionsService.getOptionsForVersion(VERSION.TWO);
+    const options = this.optionsService.getOptionsForVersion(VERSION.two);
     if (options === null) {
       this.bottomSheet.open(IntroBottomSheetComponent);
       return;
@@ -142,7 +142,7 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
         useNumbers: this.passwordGeneratorForm.value.useNumbers,
         minNumbers: this.passwordGeneratorForm.value.minNumbers,
       } as SiteSettings,
-      VERSION.TWO
+      VERSION.two
     );
 
     const password = await this.createPasswordAsync(
@@ -170,7 +170,7 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
       this.passwordField.nativeElement.focus();
     });
 
-    this.allDomains = this.siteSettingsService.getUsedDomainList(VERSION.TWO);
+    this.allDomains = this.siteSettingsService.getUsedDomainList(VERSION.two);
   }
 
   async createPasswordAsync(

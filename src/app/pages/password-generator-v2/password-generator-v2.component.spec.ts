@@ -20,19 +20,13 @@ describe('PasswordGeneratorV2Component', () => {
           {
             provide: FormBuilder,
             useValue: {
-              group: () => {
-                return {
-                  get: () => {
-                    return {
-                      valueChanges: {
-                        pipe: () => {
-                          return { subscribe: () => {} };
-                        },
-                      },
-                    };
+              group: () => ({
+                get: () => ({
+                  valueChanges: {
+                    pipe: () => ({ subscribe: () => {} }),
                   },
-                };
-              },
+                }),
+              }),
             },
           },
           { provide: MatBottomSheet, useValue: {} },

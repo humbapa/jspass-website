@@ -9,8 +9,8 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./options-page.component.scss'],
 })
 export class OptionsPageComponent implements OnInit, OnDestroy {
-  versionOne = VERSION.ONE;
-  versionTwo = VERSION.TWO;
+  versionOne = VERSION.one;
+  versionTwo = VERSION.two;
   selectedTab = 0;
 
   private unsubscribeVersion: Subject<void> = new Subject();
@@ -22,10 +22,10 @@ export class OptionsPageComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribeVersion))
       .subscribe((version) => {
         switch (version) {
-          case VERSION.ONE:
+          case VERSION.one:
             this.selectedTab = 1;
             break;
-          case VERSION.TWO:
+          case VERSION.two:
             this.selectedTab = 0;
             break;
         }

@@ -3,11 +3,11 @@ import { Options } from './options';
 import { BehaviorSubject } from 'rxjs';
 
 export const VERSION = {
-  ONE: 1,
-  TWO: 2,
+  one: 1,
+  two: 2,
 };
 
-export const DEFAULT_VERSION = VERSION.TWO;
+export const DEFAULT_VERSION = VERSION.two;
 
 @Injectable({
   providedIn: 'root',

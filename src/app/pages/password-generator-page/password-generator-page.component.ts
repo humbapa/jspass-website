@@ -25,13 +25,13 @@ export class PasswordGeneratorPageComponent implements OnInit, OnDestroy {
     this.optionsService.observedVersion
       .pipe(takeUntil(this.unsubscribeVersion))
       .subscribe((version) => {
-        if (version === VERSION.ONE) {
+        if (version === VERSION.one) {
           this.showV1 = true;
         } else {
           this.showV1 = false;
         }
 
-        if (version === VERSION.TWO) {
+        if (version === VERSION.two) {
           this.showV2 = true;
         } else {
           this.showV2 = false;

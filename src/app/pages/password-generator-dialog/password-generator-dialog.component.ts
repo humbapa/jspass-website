@@ -16,14 +16,14 @@ import { SnackBarComponent } from '../../components/snack-bar/snack-bar.componen
   styleUrls: ['./password-generator-dialog.component.scss'],
 })
 export class PasswordGeneratorDialogComponent implements OnInit, AfterViewInit {
+  @ViewChild('passwordField') passwordField;
+
   constructor(
     private dialogRef: MatDialogRef<PasswordGeneratorDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private changeDetector: ChangeDetectorRef,
     private snackBar: MatSnackBar
   ) {}
-
-  @ViewChild('passwordField') passwordField;
 
   ngOnInit(): void {}
 

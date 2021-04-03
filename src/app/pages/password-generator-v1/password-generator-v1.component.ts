@@ -11,6 +11,7 @@ import { Observable, Subject } from 'rxjs';
 import { startWith, map, takeUntil } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 declare const CryptoJS: any;
 
 @Component({
@@ -19,12 +20,12 @@ declare const CryptoJS: any;
   styleUrls: ['./password-generator-v1.component.scss'],
 })
 export class PasswordGeneratorV1Component implements OnInit, OnDestroy {
+  @ViewChild('passwordField') passwordField;
+
   passwordGeneratorForm: FormGroup;
   allDomains: string[];
   filteredDomains: Observable<string[]>;
   currentSettings: SiteSettings;
-
-  @ViewChild('passwordField') passwordField;
 
   private unsubscribeDomainField: Subject<void> = new Subject();
 
@@ -43,7 +44,7 @@ export class PasswordGeneratorV1Component implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.allDomains = this.siteSettingsService.getUsedDomainList(VERSION.ONE);
+    this.allDomains = this.siteSettingsService.getUsedDomainList(VERSION.one);
     this.filteredDomains = this.passwordGeneratorForm
       .get('domain')
       .valueChanges.pipe(
@@ -68,7 +69,7 @@ export class PasswordGeneratorV1Component implements OnInit, OnDestroy {
           .setValue(value.toLowerCase(), { emitEvent: false });
         const settings = this.siteSettingsService.getSettingsForDomain(
           value,
-          VERSION.ONE
+          VERSION.one
         );
         if (
           settings &&
@@ -99,7 +100,7 @@ export class PasswordGeneratorV1Component implements OnInit, OnDestroy {
       return;
     }
 
-    const options = this.optionsService.getOptionsForVersion(VERSION.ONE);
+    const options = this.optionsService.getOptionsForVersion(VERSION.one);
     if (options === null) {
       this.bottomSheet.open(IntroBottomSheetComponent);
       return;
@@ -110,7 +111,7 @@ export class PasswordGeneratorV1Component implements OnInit, OnDestroy {
         domainName: this.passwordGeneratorForm.value.domain,
         useSpecialChars: this.passwordGeneratorForm.value.useSpecialChars,
       } as SiteSettings,
-      VERSION.ONE
+      VERSION.one
     );
 
     const password = this.createpassword(
@@ -132,7 +133,7 @@ export class PasswordGeneratorV1Component implements OnInit, OnDestroy {
       this.passwordField.nativeElement.focus();
     });
 
-    this.allDomains = this.siteSettingsService.getUsedDomainList(VERSION.ONE);
+    this.allDomains = this.siteSettingsService.getUsedDomainList(VERSION.one);
   }
 
   // Source: https://github.com/humbapa/jspass/blob/v1/popup.js

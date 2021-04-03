@@ -18,19 +18,15 @@ describe('OptionsFormComponent', () => {
           {
             provide: FormBuilder,
             useValue: {
-              group: () => {
-                return {
-                  get: () => {
-                    return {
-                      invalid: true,
-                      errors: {
-                        required: false,
-                      },
-                    };
+              group: () => ({
+                get: () => ({
+                  invalid: true,
+                  errors: {
+                    required: false,
                   },
-                  patchValue: () => {},
-                };
-              },
+                }),
+                patchValue: () => {},
+              }),
             },
           },
           {

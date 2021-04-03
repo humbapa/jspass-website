@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./options-form.component.scss'],
 })
 export class OptionsFormComponent implements OnInit {
-  optionsForm: FormGroup;
-
   @Input() version: number;
+
+  optionsForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,

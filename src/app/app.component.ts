@@ -77,16 +77,16 @@ export class AppComponent implements OnInit {
     event.stopPropagation();
 
     if (this.toggleVersionStatus) {
-      this.version = VERSION.TWO;
+      this.version = VERSION.two;
     } else {
-      this.version = VERSION.ONE;
+      this.version = VERSION.one;
     }
 
     this.updateVersion();
   }
 
   updateVersion() {
-    if (this.version === VERSION.TWO) {
+    if (this.version === VERSION.two) {
       setTimeout(() => (this.toggleVersionStatus = false));
       this.legacyIconDisplay = 'none';
     } else {
