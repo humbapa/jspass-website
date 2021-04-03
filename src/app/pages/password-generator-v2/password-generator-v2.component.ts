@@ -69,6 +69,9 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
       .get('domain')
       .valueChanges.pipe(takeUntil(this.unsubscribeField))
       .subscribe((value) => {
+        this.passwordGeneratorForm
+          .get('domain')
+          .setValue(value.toLowerCase(), { emitEvent: false });
         const settings = this.siteSettingsService.getSettingsForDomain(
           value,
           VERSION.TWO
