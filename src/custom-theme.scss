@@ -1,97 +1,97 @@
 // Custom Theming for Angular Material
+@use '~@angular/material' as mat;
 // For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
 // https://material.angular.io/guide/typography
 // https://github.com/angular/components/blob/master/src/material/core/typography/_typography.scss
-$custom-typography: mat-typography-config(
-  $display-4: mat-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
-  $display-3: mat-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
-  $display-2: mat-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
-  $display-1: mat-typography-level(34px, 40px, 400),
-  $headline: mat-typography-level(26px, 32px, 500),
-  $title: mat-typography-level(24px, 36px, 500),
-  $subheading-2: mat-typography-level(20px, 32px, 400),
-  $subheading-1: mat-typography-level(18px, 28px, 400),
-  $body-2: mat-typography-level(16px, 26px, 500),
-  $body-1: mat-typography-level(16px, 22px, 400),
-  $caption: mat-typography-level(14px, 20px, 400),
-  $button: mat-typography-level(16px, 20px, 500),
+$custom-typography: mat.define-typography-config(
+  $display-4: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+  $display-3: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+  $display-2: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+  $display-1: mat.define-typography-level(34px, 40px, 400),
+  $headline: mat.define-typography-level(26px, 32px, 500),
+  $title: mat.define-typography-level(24px, 36px, 500),
+  $subheading-2: mat.define-typography-level(20px, 32px, 400),
+  $subheading-1: mat.define-typography-level(18px, 28px, 400),
+  $body-2: mat.define-typography-level(16px, 26px, 500),
+  $body-1: mat.define-typography-level(16px, 22px, 400),
+  $caption: mat.define-typography-level(14px, 20px, 400),
+  $button: mat.define-typography-level(16px, 20px, 500),
 );
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat-core($custom-typography);
+@include mat.core($custom-typography);
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 // Color Tool: https://material.io/resources/color
-$jspass-light-primary: mat-palette($mat-amber, A400, A200, A700);
-$jspass-light-accent: mat-palette($mat-grey, 600, 200, 800);
+$jspass-light-primary: mat.define-palette(mat.$amber-palette, A400, A200, A700);
+$jspass-light-accent: mat.define-palette(mat.$grey-palette, 600, 200, 800);
 
 // The warn palette is optional (defaults to red).
-$jspass-light-warn: mat-palette($mat-deep-orange);
+$jspass-light-warn: mat.define-palette(mat.$deep-orange-palette);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$jspass-light-theme: mat-light-theme(
+$jspass-light-theme: mat.define-light-theme(
   $jspass-light-primary,
   $jspass-light-accent,
   $jspass-light-warn
 );
 
-$jspass-light-theme-inverse: mat-light-theme(
+$jspass-light-theme-inverse: mat.define-light-theme(
   $jspass-light-accent,
   $jspass-light-primary,
   $jspass-light-warn
 );
 
 .jspass-light-theme {
-  @include angular-material-theme($jspass-light-theme);
+  @include mat.all-component-themes($jspass-light-theme);
 
-  @include mat-button-theme($jspass-light-theme-inverse);
+  @include mat.button-theme($jspass-light-theme-inverse);
 
-  @include mat-slide-toggle-theme($jspass-light-theme-inverse);
+  @include mat.slide-toggle-theme($jspass-light-theme-inverse);
 
   a {
-    color: mat-color($jspass-light-primary, darker);
+    color: mat.get-color-from-palette($jspass-light-primary, darker);
   }
 
   .jspass-snack-bar {
-    background-color: mat-color($jspass-light-primary, darker);
+    background-color: mat.get-color-from-palette($jspass-light-primary, darker);
     color: black;
   }
 }
 
-$jspass-dark-primary: mat-palette($mat-grey, 800, 700, 900);
-$jspass-dark-accent: mat-palette($mat-amber, A400, A200, A700);
-$jspass-dark-warn: mat-palette($mat-deep-orange);
-$jspass-dark-theme: mat-dark-theme(
+$jspass-dark-primary: mat.define-palette(mat.$grey-palette, 800, 700, 900);
+$jspass-dark-accent: mat.define-palette(mat.$amber-palette, A400, A200, A700);
+$jspass-dark-warn: mat.define-palette(mat.$deep-orange-palette);
+$jspass-dark-theme: mat.define-dark-theme(
   $jspass-dark-primary,
   $jspass-dark-accent,
   $jspass-dark-warn
 );
 
 .jspass-dark-theme {
-  @include angular-material-theme($jspass-dark-theme);
+  @include mat.all-component-themes($jspass-dark-theme);
 
   a {
-    color: mat-color($jspass-dark-accent, darker);
+    color: mat.get-color-from-palette($jspass-dark-accent, darker);
   }
 
   .jspass-snack-bar {
-    background-color: mat-color($jspass-dark-accent, darker);
+    background-color: mat.get-color-from-palette($jspass-dark-accent, darker);
   }
 
   .mat-input-element {
-    caret-color: mat-color($jspass-dark-accent);
+    caret-color: mat.get-color-from-palette($jspass-dark-accent);
   }
 }
 
 body.jspass-dark-theme {
-  background-color: mat-color($jspass-dark-primary, darker);
+  background-color: mat.get-color-from-palette($jspass-dark-primary, darker);
 }
 
 html,

@@ -179,12 +179,12 @@
   dependencies:
     tslib "^2.2.0"
 
-"@angular/cdk@^11.2.7":
-  version "11.2.13"
-  resolved "https://bin.ti8m.ch:443/artifactory/api/npm/channelsuite-npm/@angular/cdk/-/cdk-11.2.13.tgz#d54c9187e3b8cf3f8ba190b1edddc08ed2b740de"
-  integrity sha1-1UyRh+O4zz+LoZCx7d3AjtK3QN4=
+"@angular/cdk@^12.2.1":
+  version "12.2.1"
+  resolved "https://bin.ti8m.ch:443/artifactory/api/npm/channelsuite-npm/@angular/cdk/-/cdk-12.2.1.tgz#546d8d5f2266c962037516241cb81abc81d0d211"
+  integrity sha1-VG2NXyJmyWIDdRYkHLgavIHQ0hE=
   dependencies:
-    tslib "^2.0.0"
+    tslib "^2.2.0"
   optionalDependencies:
     parse5 "^5.0.0"
 
@@ -266,12 +266,12 @@
   resolved "https://bin.ti8m.ch:443/artifactory/api/npm/channelsuite-npm/@angular/language-service/-/language-service-12.2.1.tgz#cc8d0e12cbac5438f8cda7923922bab83c973d09"
   integrity sha1-zI0OEsusVDj4zaeSOSK6uDyXPQk=
 
-"@angular/material@^11.2.7":
-  version "11.2.13"
-  resolved "https://bin.ti8m.ch:443/artifactory/api/npm/channelsuite-npm/@angular/material/-/material-11.2.13.tgz#99960316d3ce58aac7497d7bb8b0c05468f502b9"
-  integrity sha1-mZYDFtPOWKrHSX17uLDAVGj1Ark=
+"@angular/material@^12.2.1":
+  version "12.2.1"
+  resolved "https://bin.ti8m.ch:443/artifactory/api/npm/channelsuite-npm/@angular/material/-/material-12.2.1.tgz#0dbffdc1a6684ce6761c40705688a3857f76207f"
+  integrity sha1-Db/9waZoTOZ2HEBwVoijhX92IH8=
   dependencies:
-    tslib "^2.0.0"
+    tslib "^2.2.0"
 
 "@angular/platform-browser-dynamic@~12.2.1":
   version "12.2.1"
