@@ -2,7 +2,7 @@
   <mat-card>
     <mat-card-header>
       <mat-icon mat-card-avatar class="header-icon">{{
-        version == 1 ? "looks_one" : "looks_two"
+        version === 1 ? "looks_one" : "looks_two"
       }}</mat-icon>
       <mat-card-title>Options</mat-card-title>
       <mat-card-subtitle
@@ -92,9 +92,7 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-flat-button type="button" routerLink="/">
-        Close
-      </button>
+      <button mat-flat-button type="button" routerLink="/">Close</button>
       <button
         mat-flat-button
         color="accent"
