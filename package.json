@@ -12,6 +12,11 @@
     "deploy": "rm -Rf ./dist/jspass-website/ && git fetch --recurse-submodules && git pull --recurse-submodules && ng build --configuration production"
   },
   "private": true,
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "maintained node versions"
+  ],
   "dependencies": {
     "@angular/animations": "~13.1.2",
     "@angular/cdk": "^13.0.3",
