@@ -2,7 +2,7 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OptionsFormComponent } from './options-form.component';
 
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,7 @@ describe('OptionsFormComponent', () => {
         declarations: [OptionsFormComponent],
         providers: [
           {
-            provide: FormBuilder,
+            provide: UntypedFormBuilder,
             useValue: {
               group: () => ({
                 get: () => ({

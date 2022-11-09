@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { OptionsService, VERSION } from '../../services/options.service';
@@ -21,7 +21,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
   @ViewChild('passwordField') passwordField;
 
-  passwordGeneratorForm: FormGroup;
+  passwordGeneratorForm: UntypedFormGroup;
   allDomains: string[];
   filteredDomains: Observable<string[]>;
   currentSettings: SiteSettings;
@@ -29,7 +29,7 @@ export class PasswordGeneratorV2Component implements OnInit, OnDestroy {
   private unsubscribeField: Subject<void> = new Subject();
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private optionsService: OptionsService,
     private siteSettingsService: SiteSettingsService,
     private bottomSheet: MatBottomSheet,

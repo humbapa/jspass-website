@@ -2,7 +2,7 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PasswordGeneratorV1Component } from './password-generator-v1.component';
 
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -18,7 +18,7 @@ describe('PasswordGeneratorV1Component', () => {
         declarations: [PasswordGeneratorV1Component],
         providers: [
           {
-            provide: FormBuilder,
+            provide: UntypedFormBuilder,
             useValue: {
               group: () => ({
                 get: () => ({

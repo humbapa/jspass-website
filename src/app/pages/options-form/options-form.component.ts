@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarComponent } from '../../components/snack-bar/snack-bar.component';
 import { OptionsService } from '../../services/options.service';
@@ -14,10 +14,10 @@ import { Router } from '@angular/router';
 export class OptionsFormComponent implements OnInit {
   @Input() version: number;
 
-  optionsForm: FormGroup;
+  optionsForm: UntypedFormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private snackBar: MatSnackBar,
     private optionsService: OptionsService,
     private cryptoService: CryptoService,
