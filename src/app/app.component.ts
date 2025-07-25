@@ -44,29 +44,15 @@ export class AppComponent implements OnInit {
       this.updateTheme();
     }
 
-    this.swUpdate.available.subscribe((event) => {
-      const appData: any = event.available.appData;
-
-      if (!appData.forceUpdate) {
+    this.swUpdate.versionUpdates.subscribe((event) => {
+      if (event.type === "VERSION_READY") {
         this.snackBar.openFromComponent(SnackBarComponent, {
           data: {
-            message: `There is an update available. Please refresh the page to activate it. ${appData.releaseNotes}`,
+            message: `There is an update available. Please refresh the page to activate it.`,
             icon: 'system_update',
             duration: 5000,
           },
           duration: 5000,
-        });
-      } else {
-        const snackBarRef = this.snackBar.openFromComponent(SnackBarComponent, {
-          data: {
-            message: `There is an update available. The current page will reload automatically to activate it. ${appData.releaseNotes}`,
-            icon: 'system_update',
-            duration: 5000,
-          },
-          duration: 5000,
-        });
-        snackBarRef.afterDismissed().subscribe(() => {
-          this.swUpdate.activateUpdate().then(() => document.location.reload());
         });
       }
     });
