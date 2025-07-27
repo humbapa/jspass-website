@@ -96,6 +96,7 @@ class CryptoService {
     if (form) {
       const domain = form.querySelector('input[name="domain"]').value
       const masterPassword = form.querySelector('input[name="masterPassword"]').value
+      form.querySelector('input[name="masterPassword"]').value = ''
       const passwordSettings = {
         salt: optionsService.salt,
         iterations: optionsService.iterations,
