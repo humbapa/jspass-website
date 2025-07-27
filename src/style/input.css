@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+@theme {
+  /* https://tailwindcss.com/docs/theme#default-theme-variable-reference */
+
+  --spacing: 0.0625rem; /* 1px */
+}
+
+@layer base {
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+  input[type='checkbox'] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+  }
+}
