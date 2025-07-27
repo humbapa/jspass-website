@@ -73,7 +73,7 @@ class OptionsService {
 
   saveOptionsFromForm(formId) {
     const form = document.getElementById(formId)
-    if (form) {
+    if (form && form.checkValidity()) {
       let salt = form.querySelector('textarea[name="salt"]').value
       this.salt = salt.toLowerCase().replace(/[^a-f0-9]/g, '')
       this.iterations = parseInt(form.querySelector('input[name="iterations"]').value, 10)
@@ -93,7 +93,7 @@ class CryptoService {
 
   async generatePasswordFromForm(formId) {
     const form = document.getElementById(formId)
-    if (form) {
+    if (form && form.checkValidity()) {
       const domain = form.querySelector('input[name="domain"]').value
       const masterPassword = form.querySelector('input[name="masterPassword"]').value
       form.querySelector('input[name="masterPassword"]').value = ''
